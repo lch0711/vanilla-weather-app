@@ -67,8 +67,8 @@ li:hover {
   transition: all 300ms ease-in-out;
 }
 
-a,
-a:hover {
+.units a,
+.units a:hover {
   color: #131925;
   text-decoration: none;
   cursor: default;
