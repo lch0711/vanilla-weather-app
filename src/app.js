@@ -44,6 +44,27 @@ function formatTime() {
   
   let currentDate = document.querySelector("#dateTime");
   currentDate.innerHTML = formatTime();
+
+
+  //forecast
+
+  function displayForecast() {
+  let forecastSection= document.querySelector("#forecastComponent")
+
+  let forecastHTML = "";
+  let days = ["Friday", "Saturday", "Sunday", "Monday"]
+  days.forEach(function(day) {
+  forecastHTML= forecastHTML +
+  `<div class="row" id=forecastElement>
+  <div class="col-6">${day} <br> 20°/18°</div>
+  <div class="col-6 forecastIcon">
+  <i class="fas fa-sun"></i>
+  </div>
+  </div>`;
+});
+
+  forecastSection.innerHTML = forecastHTML;
+  }
   
   //searchbar
   
@@ -72,6 +93,7 @@ function formatTime() {
     let cityCountry = result.data.sys.country;
     currentCity.innerHTML = `${cityName}, ${cityCountry}`;
 
+    displayForecast();
     
     let currentTemperature = Math.round(result.data.main.temp);
     let condition = document.querySelector("#temperature");

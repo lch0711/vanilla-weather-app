@@ -13,7 +13,7 @@ body {
   border: 1px solid;
   border-radius: 10px;
 
-  padding-bottom: 10px;
+  padding-bottom: 28px;
   background: rgb(224, 198, 199);
   background: linear-gradient(
     0deg,
@@ -52,7 +52,7 @@ h5 {
   font-size: 18px;
 }
 
-.forecastElement {
+#forecastElement {
   padding: 10px;
   margin-left: 0px;
   margin: 0 auto;
@@ -61,7 +61,7 @@ h5 {
   line-height: 2;
 }
 
-.forecastElement:hover {
+#forecastElement:hover {
   background-color: #efeff1;
   border-radius: 20px;
   transition: all 200ms ease-in-out;
