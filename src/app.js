@@ -84,7 +84,11 @@ function formatTime() {
   
     let currentDescription = document.querySelector("#description");
     let description = result.data.weather[0].description;
-    currentDescription.innerHTML = `${description}`;
+    currentDescription.innerHTML = `${description}`; 
+    let mainWeatherIcon=document.querySelector("#mainIcon");
+    mainWeatherIcon.setAttribute("src",`http://openweathermap.org/img/wn/${result.data.weather[0].icon}@2x.png`) ;
+    mainWeatherIcon.setAttribute("alt", `${description}`);
+
     let currentWind = document.querySelector("#wind");
     let windSpd = Math.round(result.data.wind.speed);
     currentWind.innerHTML = `<i class="fas fa-wind"></i> Wind: ${windSpd} m/s`;
