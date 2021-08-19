@@ -60,7 +60,8 @@ function formatTime() {
     let cityName = document.querySelector("#search-input").value;
     search(cityName);
   }
-  search("Southampton");
+  
+  
   
   let searchForm = document.querySelector("#city-search");
   searchForm.addEventListener("submit", submitCity);
@@ -70,6 +71,9 @@ function formatTime() {
     let cityName = result.data.name;
     let cityCountry = result.data.sys.country;
     currentCity.innerHTML = `${cityName}, ${cityCountry}`;
+
+    celsiusTemperature = result.data.main.temp;
+
     let currentTemperature = Math.round(result.data.main.temp);
     let condition = document.querySelector("#temperature");
     condition.innerHTML = ` ${currentTemperature}`;
@@ -121,24 +125,28 @@ function formatTime() {
   
   //units
   
-  let celsius = document.querySelector("#celsius");
-  let fahrenheit = document.querySelector("#fahrenheit");
-  
   function convertFahrenheit(event) {
     event.preventDefault();
+    let fahrenheitTemperature = Math.round((celsiusTemperature * (9 / 5) + 32));
     let temperatureElement = document.querySelector("#temperature");
-    let temperature = temperatureElement.innerHTML;
-    temperature = Number(temperature);
-    temperatureElement.innerHTML = Math.round(temperature * (9 / 5) + 32);
+    temperatureElement.innerHTML = fahrenheitTemperature;
+    celsius.classList.add("convert")
+    fahrenheit.classList.remove("convert")
   }
   function convertCelsius(event) {
     event.preventDefault();
     let temperatureElement = document.querySelector("#temperature");
-    let temperature = temperatureElement.innerHTML;
-    temperature = Number(temperature);
-    temperatureElement.innerHTML = Math.round((temperature - 32) * (5 / 9));
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+    celsius.classList.remove("convert")
+    fahrenheit.classList.add("convert")
   }
-  
-  fahrenheit.addEventListener("click", convertFahrenheit);
+
+  let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", convertCelsius);
   
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.addEventListener("click", convertFahrenheit);
+  
+  let celsiusTemperature = null
+
+  search("Southampton");
