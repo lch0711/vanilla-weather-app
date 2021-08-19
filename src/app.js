@@ -72,8 +72,7 @@ function formatTime() {
     let cityCountry = result.data.sys.country;
     currentCity.innerHTML = `${cityName}, ${cityCountry}`;
 
-    celsiusTemperature = result.data.main.temp;
-
+    
     let currentTemperature = Math.round(result.data.main.temp);
     let condition = document.querySelector("#temperature");
     condition.innerHTML = ` ${currentTemperature}`;
@@ -84,7 +83,7 @@ function formatTime() {
     let tempMinMax = document.querySelector("#min-max");
     let min = Math.round(result.data.main.temp_min);
     let max = Math.round(result.data.main.temp_max);
-    tempMinMax.innerHTML = `<i class="fas fa-thermometer-half"></i> ${min}°/${max}°`;
+    tempMinMax.innerHTML = `<i class="fas fa-thermometer-half"></i> ${max}°/${min}°`;
   
     let currentDescription = document.querySelector("#description");
     let description = result.data.weather[0].description;
@@ -102,6 +101,13 @@ function formatTime() {
     let currentClouds = document.querySelector("#clouds");
     let cloudiness = result.data.clouds.all;
     currentClouds.innerHTML = `<i class="fas fa-cloud"></i> Cloudiness: ${cloudiness}%`;
+
+    celsiusTemperature = result.data.main.temp;
+    feelLikeTemperature = result.data.main.feels_like;
+    minTemperature = result.data.main.temp_min
+    maxTemperature = result.data.main.temp_max
+
+
   }
   
   //geolocation
@@ -130,13 +136,33 @@ function formatTime() {
     let fahrenheitTemperature = Math.round((celsiusTemperature * (9 / 5) + 32));
     let temperatureElement = document.querySelector("#temperature");
     temperatureElement.innerHTML = fahrenheitTemperature;
-    celsius.classList.add("convert")
-    fahrenheit.classList.remove("convert")
+
+    let currentFeeling = document.querySelector("#feels-like");
+    let feelsLike= Math.round((feelLikeTemperature * (9 / 5) + 32));
+    currentFeeling.innerHTML = `Feels like ${feelsLike}°`;
+
+    let tempMinMax = document.querySelector("#min-max")
+    let minTemp = Math.round ((minTemperature * (9 / 5) + 32));
+    let maxTemp = Math.round ((maxTemperature * (9 / 5) + 32));
+    tempMinMax.innerHTML = `<i class="fas fa-thermometer-half"></i> ${maxTemp}°/ ${minTemp}°`;
+
+    celsius.classList.add("convert");
+    fahrenheit.classList.remove("convert");
   }
   function convertCelsius(event) {
     event.preventDefault();
     let temperatureElement = document.querySelector("#temperature");
     temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+    let currentFeeling = document.querySelector("#feels-like");
+     let feelsLike= Math.round(feelLikeTemperature);
+    currentFeeling.innerHTML = `Feels like ${feelsLike}°`;
+
+    let tempMinMax = document.querySelector("#min-max")
+     let minTemp = Math.round (minTemperature);
+    let maxTemp = Math.round (maxTemperature);
+    tempMinMax.innerHTML = `<i class="fas fa-thermometer-half"></i> ${maxTemp}°/ ${minTemp}°`;
+
     celsius.classList.remove("convert")
     fahrenheit.classList.add("convert")
   }
@@ -148,5 +174,8 @@ function formatTime() {
   fahrenheit.addEventListener("click", convertFahrenheit);
   
   let celsiusTemperature = null
+  let feelLikeTemperature = null
+  let minTemperature = null
+  let maxTemperature = null
 
   search("Southampton");

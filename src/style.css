@@ -74,11 +74,11 @@ li:hover {
   cursor: default;
 }
 
-.convert {
+.units .convert {
   color: #8b8180;
 }
 
-.convert:hover {
+.units .convert:hover {
   text-decoration: underline;
   color: #8b8180;
   cursor: default;
