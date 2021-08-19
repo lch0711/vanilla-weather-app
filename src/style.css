@@ -52,11 +52,7 @@ h5 {
   font-size: 18px;
 }
 
-ul {
-  list-style: none;
-}
-
-li {
+.forecastElement {
   padding: 10px;
   margin-left: 0px;
   margin: 0 auto;
@@ -65,7 +61,7 @@ li {
   line-height: 2;
 }
 
-li:hover {
+.forecastElement:hover {
   background-color: #efeff1;
   border-radius: 20px;
   transition: all 200ms ease-in-out;
