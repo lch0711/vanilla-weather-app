@@ -14,7 +14,12 @@ body {
   border-radius: 10px;
 
   padding-bottom: 10px;
-  background-color: #c2d5db;
+  background: rgb(224, 198, 199);
+  background: linear-gradient(
+    0deg,
+    rgba(224, 198, 199, 1) 0%,
+    rgba(180, 219, 248, 1) 100%
+  );
 }
 
 section {
@@ -61,10 +66,9 @@ li {
 }
 
 li:hover {
-  background-color: #c5ccd4;
-  border-color: #131925;
+  background-color: #efeff1;
   border-radius: 20px;
-  transition: all 300ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .units a,
@@ -103,6 +107,7 @@ li:hover {
 .forecast {
   position: relative;
   top: 34px;
+  font-size: 14px;
 }
 
 .units {
@@ -130,5 +135,5 @@ li:hover {
 
 .forecastIcon {
   position: relative;
-  top: 20px;
+  top: 10px;
 }

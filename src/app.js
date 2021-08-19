@@ -83,7 +83,7 @@ function formatTime() {
     let tempMinMax = document.querySelector("#min-max");
     let min = Math.round(result.data.main.temp_min);
     let max = Math.round(result.data.main.temp_max);
-    tempMinMax.innerHTML = `<i class="fas fa-thermometer-half"></i> ${max}°/${min}°`;
+    tempMinMax.innerHTML = `<i class="fas fa-thermometer-half"></i>  ${max}°/${min}°`;
   
     let currentDescription = document.querySelector("#description");
     let description = result.data.weather[0].description;
