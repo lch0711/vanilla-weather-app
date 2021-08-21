@@ -62,7 +62,7 @@ h5 {
 }
 
 #forecastElement:hover {
-  background-color: #efeff1;
+  background-color: #e5e4e2;
   border-radius: 20px;
   transition: all 200ms ease-in-out;
 }
