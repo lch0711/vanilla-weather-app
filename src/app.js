@@ -47,7 +47,8 @@ currentDate.innerHTML = formatTime();
 
 //forecast
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response);
   let forecastSection = document.querySelector("#forecastComponent");
 
   let forecastHTML = "";
@@ -70,7 +71,8 @@ function getForecast(coordinates) {
   let apiKey = "353945fb94bb7d9cc7861a36dae03c52";
   let exclusions = "current,minutely,hourly,alerts";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=${exclusions}&appid=${apiKey}&units=metric`;
-  console.log(apiURL);
+
+  axios.get(apiURL).then(displayForecast);
 }
 
 //searchbar
@@ -135,7 +137,6 @@ function showTemperature(result) {
   minTemperature = result.data.main.temp_min;
   maxTemperature = result.data.main.temp_max;
 
-  displayForecast();
   getForecast(result.data.coord);
 }
 
