@@ -61,12 +61,6 @@ h5 {
   line-height: 2;
 }
 
-#forecastElement:hover {
-  background-color: #e5e4e2;
-  border-radius: 20px;
-  transition: all 200ms ease-in-out;
-}
-
 .units a,
 .units a:hover {
   color: #131925;
